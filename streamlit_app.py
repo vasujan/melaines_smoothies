@@ -23,9 +23,12 @@ if ingredients_list:
     values ('{ingredients_string}', '{name_on_order}')
     """
 
+    for fruit_chosen in ingredient_list:
+        fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit_chosen}")
+        st.dataframe(data = fruityvice_response.json(), use_container_width = True)
+
+
 if time_to_insert:
     session.sql(my_insert_stmt).collect()
     st.success('Your Smoothie is ordered!', icon="✅")
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.dataframe(data = fruityvice_response.json(), use_container_width = True)
