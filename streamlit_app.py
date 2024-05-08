@@ -12,6 +12,9 @@ fruits_df = session.table("smoothies.public.fruit_options").select(col("FRUIT_NA
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:', name_on_order)
 
+st.write(type(fruits_df))
+st.write(fruits_df)
+
 ingredients_list = st.multiselect("Choose upto 5 ingredients:", fruits_df["FRUIT_NAME"], max_selections=5)
 time_to_insert = st.button("Submit Order")
 my_insert_stmt = ""
