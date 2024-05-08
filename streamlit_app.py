@@ -7,16 +7,16 @@ st.title(":cup_with_straw: Customize your Smoothie! :cup_with_straw:")
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-fruits_df = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"), col("SEARCH_ON")).collect()
-st.dataframe(fruits_df)
-st.stop()
+fruits_df = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"), col("SEARCH_ON"))
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:', name_on_order)
 
-ingredients_list = st.multiselect("Choose upto 5 ingredients:", fruits_df, max_selections=5)
+ingredients_list = st.multiselect("Choose upto 5 ingredients:", fruits_df["FRUIT_NAME"], max_selections=5)
 time_to_insert = st.button("Submit Order")
 my_insert_stmt = ""
+
+st.stop()
 
 if ingredients_list:
     ingredients_string = " ".join(ingredients_list)
