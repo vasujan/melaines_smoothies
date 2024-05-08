@@ -16,8 +16,6 @@ ingredients_list = st.multiselect("Choose upto 5 ingredients:", fruits_df.select
 time_to_insert = st.button("Submit Order")
 my_insert_stmt = ""
 
-st.stop()
-
 if ingredients_list:
     ingredients_string = " ".join(ingredients_list)
     my_insert_stmt = f"""
