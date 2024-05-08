@@ -1,6 +1,7 @@
 import streamlit as st
 # from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col, when_matched
+import requests
 
 st.title(":cup_with_straw: Customize your Smoothie! :cup_with_straw:")
 
@@ -26,3 +27,5 @@ if time_to_insert:
     session.sql(my_insert_stmt).collect()
     st.success('Your Smoothie is ordered!', icon="✅")
 
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
