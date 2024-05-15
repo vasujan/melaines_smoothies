@@ -21,7 +21,7 @@ if ingredients_list:
     ingredients_string = " ".join(ingredients_list)
     my_insert_stmt = f"""
     insert into smoothies.public.orders(ingredients, name_on_order)
-    values ('{ingredients_string}', '{name_on_order}')
+    values ('{ingredients_string} ', '{name_on_order}')
     """
 
     if time_to_insert:
